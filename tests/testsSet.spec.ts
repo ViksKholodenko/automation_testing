@@ -1,21 +1,35 @@
-import { test, expect, chromium } from '@playwright/test';
+import {Browser, BrowserContext, test, expect, chromium, Page } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
 import { SignupPage } from '../pages/signupPage';
 
-/*test.beforeEach(async ({page}) =>{
-    await page.goto('https://automationexercise.com/')
+//let browser:Browser;
+//let context:BrowserContext;
+//let page:Page;
+
+/*test.beforeAll(async () => {
+    browser = await chromium.launch();
+    context = await browser.newContext();
+})
+
+test.afterEach(async () => {
+    await page.close();
+})
+
+test.afterAll(async () =>{
+    await context.close();
+    await browser.close();
 })*/
 
-test('Sign-up to site', async ({page}) => {
+test('Sign-up to site and deleting account', async ({page}) => {
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
     const signupPage = new SignupPage(page);
 
-    await homePage.goto();
+    await homePage.openHomePage();
     await homePage.clickOnSingIn();
 
-    await loginPage.isSigninPageOpen();
+    await loginPage.isLoginPageOpen();
     await loginPage.enterSignUpCreds('test user','rozboy3@gmail.com');
     await loginPage.clickOnSingupBttn();
     
@@ -25,30 +39,29 @@ test('Sign-up to site', async ({page}) => {
     await signupPage.clickCreateAccount();
 
     //Ask how to optimize this part
-    await expect(page.getByText('ACCOUNT CREATED!')).toBeVisible();
+    await expect(page.getByText('ACCOUNT CREATED!')).toBeVisible();  //??? is it ok to verify by text, or page URL would be better?
     await page.getByTestId('continue-button').click();
     await expect(page.getByText('Logged in as test use')).toBeVisible();
-
+    await homePage.clickOnDeleteAccount();
+    await expect(page.getByText('Account deleted!')).toBeVisible();
 })
 
-/*test ('Log-out from site', async ({page})=>{
-    
-})
-
-test('Log-in to site as correct user', async ({page}) => {
+test('Log-in & Log-out as existing user', async ({page}) => {
     
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
 
-    await homePage.goto();
+    //await page.waitForLoadState();
+
+    await homePage.openHomePage();
     await homePage.clickOnSingIn();
 
-    await loginPage.isSigninPageOpen();
-    await loginPage.enterSignInCreds("rozboy3@gmail.com", "testPass");
+    await loginPage.isLoginPageOpen();
+    await loginPage.enterSignInCreds("testuserviktoriia@gmail.com", "xwj2pxz_pqk2ywt2AHE");
     await loginPage.clickOnSinginBttn();
 
-    await expect(page.getByText('Logged in as test use')).toBeVisible();
+    await expect(page.getByText('Logged in as Vika\'s Test User')).toBeVisible();
+    await homePage.clickOnLogout();
+    await loginPage.isLoginPageOpen;
 
-    await page.getByText(' Delete Account').click();
-
-}) */
+})
