@@ -1,80 +1,62 @@
-import {Locator, type Page } from "@playwright/test";
+import { Locator, type Page } from "@playwright/test";
+import { urls } from "../data/urls";
+import { locators } from "../data/locators";
 export class HomePage {
     readonly page: Page;
-    homePageURL: string;
-    singupBttn: Locator;
-    logoutBttn: Locator;
-    homeBttn: Locator;
-    productsBttn: Locator;
-    cartBttn: Locator;
-    testCasesBttn: Locator;
-    apiTestingBttn: Locator;
-    videoTutorialsBttn: Locator;
-    contactUsBttn: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.homePageURL = 'https://automationexercise.com';
-        this.singupBttn = page.getByRole('link', {name: ' Signup / Login'});
-        this.logoutBttn = page.getByText('Logout');
-        this.homeBttn = page.getByText('Home');
-        this.productsBttn = page.getByText('Products');
-        this.cartBttn = page.getByText('Cart');
-        this.testCasesBttn = page.getByText('Test Cases');
-        this.apiTestingBttn = page.getByText('API Testing');
-        this.videoTutorialsBttn = page.getByText('Video Tutorials');
-        this.contactUsBttn = page.getByText('Contact us');
     }
 
     async openHomePage() {
-        await this.page.goto(this.homePageURL);
+        await this.page.goto(urls.homePageUrl);
     }
 
-    // ?? Maybe this part with Header menu could be moved to separate class. Let's discuss this on meeting
-    async clickOnHome(){
-        await this.homeBttn.click();
+    async clickOnHome() {
+        await this.page.getByText(locators.homeBttnText).click();
     }
 
-    async clickOnProduct(){
-        await this.productsBttn.click();
+    async clickOnProduct() {
+        await this.page.getByText(locators.productsBttnText).click();
     }
 
-    async clickOnCart(){
-        await this.cartBttn.click();
+    async clickOnCart() {
+        await this.page.getByText(locators.cartBttnText).click();
     }
 
-    async clickOnSingIn(){
-        await this.singupBttn.click()
+    async clickOnSingIn() {
+        await this.page.getByRole('link', { name: ' Signup / Login' }).click()
     }
 
-    async clickOnTestCases(){
-        await this.testCasesBttn.click();
+    async clickOnTestCases() {
+        await this.page.getByText(locators.testCasesBttnText).click();
     }
 
     async clickOnAPITesting() {
-        await this.apiTestingBttn.click();
+        await this.page.getByText(locators.apiTestingBttnText).click();
     }
 
-    async clickOnVideoTutorials(){
-        await this.videoTutorialsBttn.click();
+    async clickOnVideoTutorials() {
+        await this.page.getByText(locators.videoTutorialsBttnText).click();
     }
 
-    async clickOnContactUs(){
-        await this.contactUsBttn.check();
+    async clickOnContactUs() {
+        await this.page.getByText(locators.contactUsBttnText).click();
     }
 
-    // ?? is it ok to use such approach instead of previous list of methods to click on each button?
-    async clickOnMenuButton(buttonName){
+    // function to click on Home, Product, Cart, Test Cases, API Testing, Video Tutorials, Log Out
+    // not sure if it's a good practice to use this method instead of separate method for each button.
+    async clickOnMenuButton(buttonName) {
         await this.page.getByText(buttonName).click();
     }
 
 
     // Log out and Delete account appears when user logged in
-    async clickOnLogout(){
-        await this.logoutBttn.click();
+    async clickOnLogout() {
+        await this.page.getByText(locators.logoutBttnText).click();
     }
 
-    async clickOnDeleteAccount(){
+    async clickOnDeleteAccount() {
         await this.page.getByText(' Delete Account').click();
     }
 }
