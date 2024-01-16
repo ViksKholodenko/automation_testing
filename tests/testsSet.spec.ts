@@ -1,25 +1,7 @@
-import {Browser, BrowserContext, test, expect, chromium, Page } from '@playwright/test';
+import {test, expect, chromium, Page } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
 import { SignupPage } from '../pages/signupPage';
-
-//let browser:Browser;
-//let context:BrowserContext;
-//let page:Page;
-
-/*test.beforeAll(async () => {
-    browser = await chromium.launch();
-    context = await browser.newContext();
-})
-
-test.afterEach(async () => {
-    await page.close();
-})
-
-test.afterAll(async () =>{
-    await context.close();
-    await browser.close();
-})*/
 
 test('Sign-up to site and deleting account', async ({page}) => {
     const homePage = new HomePage(page);
