@@ -3,6 +3,7 @@ import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
 import { SignupPage } from '../pages/signupPage';
 
+
 test('Sign-up to site and deleting account', async ({page}) => {
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
