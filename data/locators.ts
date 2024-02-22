@@ -1,4 +1,4 @@
-export const data = {
+export const locators = {
     //Sing Up page
     signUpPasswordTxtField: '[data-qa = "password"]',
     signUpEmailTxtField: '[data-qa = "email"]',
@@ -23,8 +23,22 @@ export const data = {
     accountStatusContinueBttn: '[data-qa = "continue-button"]',
 
     //Home page
-
+    
+    //signInLogInBttn: '[role = "link"] >> text = " Signup / Login"',
+    logoutBttn: 'text="Logout"',
+    homeBttn: 'text="Home"',
+    productsBttn: 'text = "Products"',
+    cartBttn: 'text = "Cart"',
+    testCasesBttn: 'text = "Test Cases"',
+    apiTestingBttn: 'text = "API Testing"',
+    videoTutorialsBttn: 'text = "Video Tutorials"',
+    contactUsBttn: 'text = "Contact us"',
+    
     //Login page
     loginEmailTxtField: '[data-qa = "login-email"]',
-    loginPasswordTxtField: '[data-qa = "login-password"]'
+    loginPasswordTxtField: '[data-qa = "login-password"]',
+    loginBttn: '[data-qa = "login-button"]',
+    signUpName: '[data-qa = "signup-name"]',
+    signupEmail: '[data-qa = "signup-email"]',
+    signUpBttn: '[data-qa = "signup-button"]',
 }
