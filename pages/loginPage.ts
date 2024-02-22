@@ -17,17 +17,21 @@ export class LoginPage {
         this.signupBttn = page.getByTestId('signup-button');
         this.loginBttn = page.getByTestId('login-button');
     }
-    async goto(){
+    async openLoginPage(){
         await this.page.goto(this.loginPageURL);
     }
 
-    async isSigninPageOpen(){
+    async isLoginPageOpen(){
         await expect(this.page.getByText('Login to your account')).toBeVisible();
     }
 
     async enterSignInCreds(email, password){
         await this.page.fill(data.loginEmailTxtField, email);
         await this.page.fill(data.loginPasswordTxtField, password);
+    }
+
+    async clickOnSinginBttn() {
+        await this.loginBttn.click();
     }
 
     async enterSignUpCreds(username, email){
@@ -38,9 +42,5 @@ export class LoginPage {
     async clickOnSingupBttn (){
         await this.signupBttn.click();
     }
-
-    async clickOnSinginBttn() {
-        await this.loginBttn.click();
-    }
-
+    
 }
