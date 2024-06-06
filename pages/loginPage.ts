@@ -16,6 +16,10 @@ export class LoginPage {
         await expect(this.page.getByText('Login to your account')).toBeVisible();
     }
 
+    async isSignUpPageOpened() {
+        await expect(this.page.getByText('New User Signup!')).toBeVisible();
+    }
+
     async enterSignInCreds(email, password) {
         await this.page.getByTestId(locators.loginEmailTestId).fill(email);
         await this.page.getByTestId(locators.loginPasswordTestId).fill(password);

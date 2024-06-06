@@ -19,6 +19,7 @@ export const testData = {
     //Sign-in test data
     signInEmail: 'testuserviktoriia@gmail.com',
     signInTestPass: 'xwj2pxz_pqk2ywt2AHE',
+    singInUserName: 'Test User',
 
     //Error and warning messages
     signInIncorrectCredsError: 'Your email or password is incorrect!',

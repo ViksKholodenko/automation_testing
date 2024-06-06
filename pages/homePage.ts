@@ -1,4 +1,4 @@
-import { Locator, type Page } from "@playwright/test";
+import { expect, type Page } from "@playwright/test";
 import { urls } from "../data/urls";
 import { locators } from "../data/locators";
 export class HomePage {
@@ -58,5 +58,10 @@ export class HomePage {
 
     async clickOnDeleteAccount() {
         await this.page.getByText(' Delete Account').click();
+    }
+
+    async verifyOpenedPage(buttonText: string) {
+        const buttonStyleAttribute = this.page.locator(`a:has-text("${buttonText}")`);
+        expect(buttonStyleAttribute).toHaveAttribute('style', /color:\s*orange;/);
     }
 }
