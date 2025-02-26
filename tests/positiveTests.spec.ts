@@ -37,6 +37,7 @@ test('Log-in & Log-out as existing user', async ({ page }) => {
 
     await pm.onLoginPage().isLoginPageOpen();
     await pm.onLoginPage().enterSignInCreds(testData.signInEmail, testData.signInTestPass);
+    await page.screenshot({path: 'screenshots/completedLoginForm.png'})
     await pm.onLoginPage().clickOnSinginBttn();
 
     await expect(page.getByText('Logged in as Vika\'s Test User')).toBeVisible();
