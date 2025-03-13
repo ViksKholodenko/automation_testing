@@ -3,6 +3,7 @@ import { PageManager } from '../pages/pageManager';
 import { testData } from '../data/testData';
 import { locators } from '../data/locators';
 
+
 test('Sign-up to site and deleting account', async ({ page }) => {
     const pm = new PageManager(page)
 
@@ -43,4 +44,14 @@ test('Log-in & Log-out as existing user', async ({ page }) => {
     await expect(page.getByText('Logged in as Vika\'s Test User')).toBeVisible();
     await pm.onHomePage().clickOnMenuButton("Logout");
     pm.onLoginPage().isLoginPageOpen;
+})
+
+test('Add single item to cart', async ({page}) =>{
+    const pm = new PageManager(page)
+    await pm.onHomePage().openHomePage()
+    await pm.onHomePage().clickOnProduct()
+    await pm.onProductsPage().addSingleProductToCart('Blue Top')
+    await pm.onProductsPage().closePopupToViewCart()
+    //TODO: Refactor Add validation if Cart page is opened
+    await expect(page).toHaveTitle('Automation Exercise - Checkout')
 })

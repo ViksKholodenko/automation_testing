@@ -3,6 +3,7 @@ import {AccountStatusPage} from '../pages/accountStatusPage'
 import {HomePage} from '../pages/homePage'
 import {LoginPage} from '../pages/loginPage'
 import {SignupPage} from '../pages/signupPage'
+import { ProductsPage } from "./productsPage"
 
 
 export class PageManager{
@@ -13,6 +14,7 @@ export class PageManager{
     private readonly homePage: HomePage
     private readonly loginPage: LoginPage
     private readonly signupPage: SignupPage
+    private readonly ProductsPage: ProductsPage
 
     constructor(page:Page){
         this.page = page
@@ -22,6 +24,7 @@ export class PageManager{
         this.homePage = new HomePage(this.page)
         this.loginPage = new LoginPage(this.page)
         this.signupPage = new SignupPage(this.page)
+        this.ProductsPage = new ProductsPage(this.page)
     }
 
     //methods to return instances for all page objects
@@ -39,5 +42,9 @@ export class PageManager{
 
     onSignupPage(){
         return this.signupPage
+    }
+
+    onProductsPage(){
+        return this.ProductsPage
     }
 }
