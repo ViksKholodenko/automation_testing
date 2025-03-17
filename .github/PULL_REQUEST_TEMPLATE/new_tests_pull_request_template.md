@@ -1,8 +1,17 @@
 ## Summary
-(Summarize what features or e2e scenarios are covered by these tests and what related to this changes were made)
+(Summarize what features or e2e scenarios are covered by tests and what related changes were made)
 
 ## Checklist
-- [ ] I added the next tests for this feature | scenario
-- [ ] I made current changes in config | BasePage | PageManager | Reporting | etc.
-- [ ] No errors nor warnings in the console.
-- [ ] All tests passed using specific test data | environment
+- [ ] UI automation tests added | updated
+- [ ] E2E automation tests added | updated
+- [ ] API automation tests added |updated
+- [ ] Config changes mage
+
+## Test Scenarios
+<!-- List key test scenarios covered -->
+
+## Test Data Requirements
+<!-- Specify test data needs -->
+
+## Known Limitations
+<!-- Document any edge cases not covered -->
