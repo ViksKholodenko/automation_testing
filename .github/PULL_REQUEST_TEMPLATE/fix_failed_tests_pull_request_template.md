@@ -4,7 +4,8 @@
 (What is the solution?)
 
 ## Checklist
-- [ ] I fixed | updated | added a new step in THIS test
-- [ ] I changed the data for THIS test
+- [ ] UI automation tests fixed by changing | adding | updating steps | data | configurations
+- [ ] E2E automation tests fixed by changing | adding | updating steps | data | configurations
+- [ ] API automation tests fixed by changing | adding | updating steps | data | configurations
 - [ ] No error nor warning in the console
-- [ ] All tests passed using THIS test data on THIS environment
+- [ ] All tests passed on dev | local environment
