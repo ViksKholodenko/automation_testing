@@ -22,7 +22,6 @@ export class HomePage {
 
     async clickOnCart() {
         await this.page.locator('.nav.navbar-nav .fa.fa-shopping-cart').click()
-        //await this.page.getByText(locators.cartBttnText).click();
     }
 
     async clickOnSingIn() {

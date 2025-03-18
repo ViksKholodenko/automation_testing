@@ -3,12 +3,12 @@ import { PageManager } from "../pages/pageManager";
 
 test('Search product and verify Cart after log-in', async({page}) =>{
     let searchParameter = "dress";
-    const pm= new PageManager(page)
+    const pm = new PageManager(page);
     await pm.onHomePage().openHomePage();
     await pm.onHomePage().clickOnProduct();
     await expect(page).toHaveTitle('Automation Exercise - All Products');
-    //await pm.onProductsPage().searchProductByText(searchParameter);
     const { valid: validProducts } = await pm.onProductsPage().validateSearchResults(searchParameter);
+    expect(validProducts.length, `ERROR: ❌ Test failed: Search did NOT return any product with ${searchParameter} in title`).toBeGreaterThan(0);
     const addedItems = await pm.onProductsPage().addSeveralProductsToCart(validProducts, 3);
     await pm.onHomePage().clickOnCart();
     const itemsInCart = await page.locator('.cart_description h4 a').allTextContents();
