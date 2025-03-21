@@ -1,9 +1,10 @@
-import {Page, expect} from "@playwright/test"
-import {AccountStatusPage} from '../pages/accountStatusPage'
-import {HomePage} from '../pages/homePage'
-import {LoginPage} from '../pages/loginPage'
-import {SignupPage} from '../pages/signupPage'
+import { Page } from "@playwright/test"
+import { AccountStatusPage } from '../pages/accountStatusPage'
+import { HomePage } from '../pages/homePage'
+import { LoginPage } from '../pages/loginPage'
+import { SignupPage } from '../pages/signupPage'
 import { ProductsPage } from "./productsPage"
+import { CartPage } from "./cartPage"
 
 
 export class PageManager{
@@ -14,7 +15,8 @@ export class PageManager{
     private readonly homePage: HomePage
     private readonly loginPage: LoginPage
     private readonly signupPage: SignupPage
-    private readonly ProductsPage: ProductsPage
+    private readonly productsPage: ProductsPage
+    private readonly cartPage: CartPage
 
     constructor(page:Page){
         this.page = page
@@ -24,7 +26,8 @@ export class PageManager{
         this.homePage = new HomePage(this.page)
         this.loginPage = new LoginPage(this.page)
         this.signupPage = new SignupPage(this.page)
-        this.ProductsPage = new ProductsPage(this.page)
+        this.productsPage = new ProductsPage(this.page)
+        this.cartPage = new CartPage(this.page)
     }
 
     //methods to return instances for all page objects
@@ -45,6 +48,10 @@ export class PageManager{
     }
 
     onProductsPage(){
-        return this.ProductsPage
+        return this.productsPage
+    }
+
+    onCartPage(){
+        return this.cartPage
     }
 }
