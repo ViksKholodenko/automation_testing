@@ -28,7 +28,7 @@ export const locators = {
     logoutBttnText: 'Logout',
     homeBttnText: 'Home',
     productsBttnText: 'Products',
-    cartBttnText: 'Cart',
+    cartBttnText: ' Cart',
     testCasesBttnText: 'Test Cases',
     apiTestingBttnText: 'API Testing',
     videoTutorialsBttnText: 'Video Tutorials',
